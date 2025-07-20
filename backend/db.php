@@ -1,0 +1,1 @@
+<?php // Veritabanı bağlantısı ?>

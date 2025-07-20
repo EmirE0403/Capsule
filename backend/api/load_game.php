@@ -1,0 +1,1 @@
+<?php // Load game scene ?>
