@@ -1,0 +1,27 @@
+php_value display_errors On
+php_value mbstring.http_input auto
+php_value date.timezone Europe/Istanbul
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET,PUT,POST,DELETE"
+Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+ErrorDocument 400 https://capsule.net.tr/errorpages/400.php
+ErrorDocument 401 https://capsule.net.tr/errorpages/401.php
+ErrorDocument 403 https://capsule.net.tr/errorpages/403.php
+ErrorDocument 404 https://capsule.net.tr/errorpages/404.php
+ErrorDocument 500 https://capsule.net.tr/errorpages/500.php
+ErrorDocument 503 https://capsule.net.tr/errorpages/503.php
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Görsel dosyalar 1 ay boyunca önbellekte kalsın
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+
+  # CSS ve JS için de isteğe bağlı
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+Options -Indexes
