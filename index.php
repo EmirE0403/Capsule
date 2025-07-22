@@ -11,26 +11,27 @@ if ($config['maintenance_mode'] && !isset($_GET['admin'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     </head>
-    <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-        <div id="error" class="hidden bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded"></div>
-        <div id="warning" class="hidden bg-yellow-50 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded"></div>
-        <div class="text-center bg-white shadow-lg rounded-lg p-8 max-w-md">
-            <h1 class="text-2xl font-bold text-red-600 mb-4">{$config['maintenance_name']}</h1>
-            <p class="text-gray-600">{$config['maintenance_message']}</p>
-            <p class="text-sm text-gray-400">Yönetici giriş yaparak devam edebilir.</p>
+    <body>
+        <div class="bg-gray-100 flex items-center justify-center min-h-screen">
+            <div id="error" class="hidden bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded"></div>
+            <div id="warning" class="hidden bg-yellow-50 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded"></div>
+            <div class="text-center bg-white shadow-lg rounded-lg p-8 max-w-md">
+                <h1 class="text-2xl font-bold text-red-600 mb-4">{$config['maintenance_name']}</h1>
+                <p class="text-gray-600">{$config['maintenance_message']}</p>
+                <p class="text-sm text-gray-400">Yönetici giriş yaparak devam edebilir.</p>
+            </div>
         </div>
+        
         <script>
-            //const warningElement = document.getElementById('warning');
-            //warningElement.textContent = `Capsule Sitesi ve Sistemleri Şu Anlık Güncelleniyor! Bazı Özellikler Çalışmayabilir!`;
-            //warningElement.classList.remove('hidden');
+           // const warningElement = document.getElementById('warning');
+           // warningElement.textContent = `Capsule Sitesi ve Sistemleri Şu Anlık Güncelleniyor! Bazı Özellikler Çalışmayabilir!`;
+           // warningElement.classList.remove('hidden');
         </script>
     </body>
     </html>
     HTML;
     exit;
 }
-// Çerezden kullanıcı adı bilgisini alıyoruz
-$username = isset($_COOKIE['username']) ? $_COOKIE['username'] : 'Misafir'; // Eğer çerez yoksa 'Misafir' olarak göster
 ?>
 
 <!DOCTYPE html>
@@ -58,31 +59,42 @@ $username = isset($_COOKIE['username']) ? $_COOKIE['username'] : 'Misafir'; // E
     </style>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1997600246177634"
-     crossorigin="anonymous"></script>
 </head>
 <body class="bg-gray-50 min-h-screen">
     <div class="container mx-auto px-4 py-8">
         <header class="mb-8 flex items-center justify-between">
             <div class="flex items-center space-x-4">
-                <img src="res/image/CapsuleLogo.png" alt="Capsule Logo" class="h-14">
-                <p class="text-gray-500 mt-2">Kendi oyun deneyimini keşfet</p>
+                <img src="res/images/CapsuleLogo.png" alt="Capsule Logo" class="h-14">
+                <p class="text-gray-500 mt-2">Prototip</p>
             </div>
             <nav class="flex space-x-4">
                 <a href="index.php" class="text-gray-600 hover:text-indigo-600 font-medium">Ana Sayfa</a>
-                <a href="studio/studio.php" class="text-gray-600 hover:text-indigo-600 font-medium">Studio</a>
-                <a href="status.php" class="text-gray-600 hover:text-indigo-600 font-medium">Status</a>
+                <!-- <a href="studio/studio.php" class="text-gray-600 hover:text-indigo-600 font-medium">Studio</a>
+                <a href="status.php" class="text-gray-600 hover:text-indigo-600 font-medium">Status</a> -->
                 
                 <!-- Kullanıcı adı veya Misafir yazısı -->
                 <div class="flex items-center space-x-2">
                     <span>|</span>
-                    <img src="res/image/CapsuleMisafir.png" alt="Misafir" class="h-8 w-8 rounded-full">
+                    <!--<img src="res/images/CapsuleMisafir.png" alt="Misafir" class="h-8 w-8 rounded-full">
                     <span id="user-status" class="text-gray-600 hover:text-indigo-600 font-medium cursor-pointer">
-                        <?php echo $username; ?>
-                    </span>
+                        Misafir
+                    </span> -->
+
+                    <button class="text-gray-600 hover:text-indigo-600 font-medium">
+                        Giriş Yap
+                    </button>
+
+                    <button class="text-gray-600 hover:text-indigo-600 font-medium">
+                        Kayıt Ol
+                    </button>
                 </div>
             </nav>
         </header>
+
+        <!-- Hata mesajı -->
+        <div id="error" class="hidden bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded"></div>
+        <div id="warning" class="hidden bg-yellow-50 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded"></div>
+        <div id="good" class="hidden bg-green-50 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded"></div>
 
         <!-- Yükleme durumu -->
         <div id="loading" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -91,12 +103,11 @@ $username = isset($_COOKIE['username']) ? $_COOKIE['username'] : 'Misafir'; // E
             <div class="skeleton bg-gray-200 rounded-lg h-64"></div>
             <div class="skeleton bg-gray-200 rounded-lg h-64"></div>
             <div class="skeleton bg-gray-200 rounded-lg h-64"></div>
+            <div class="skeleton bg-gray-200 rounded-lg h-64"></div>
+            <div class="skeleton bg-gray-200 rounded-lg h-64"></div>
+            <div class="skeleton bg-gray-200 rounded-lg h-64"></div>
+            <div class="skeleton bg-gray-200 rounded-lg h-64"></div>
         </div>
-
-        <!-- Hata mesajı -->
-        <div id="error" class="hidden bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded"></div>
-
-        <div id="warning" class="hidden bg-yellow-50 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded"></div>
 
         <!-- Oyun listesi -->
         <div id="games-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
@@ -187,8 +198,8 @@ $username = isset($_COOKIE['username']) ? $_COOKIE['username'] : 'Misafir'; // E
         }
 
         //Dikkat Penceresi
-        const warningElement = document.getElementById('warning');
-        warningElement.textContent = `Veritabanı Taşıma Yapılmaktadır!`;
+        const warningElement = document.getElementById('good');
+        warningElement.textContent = `Şu An Test Aşamasında`;
         warningElement.classList.remove('hidden');
 
         // Uygulamayı başlat

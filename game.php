@@ -14,6 +14,7 @@ $game = $result->fetchArray(SQLITE3_ASSOC);
 // Sayfa başlığı ayarı
 $pageTitle = $game ? $game['name'] : 'Oyun Bulunamadı';
 ?>
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -24,7 +25,34 @@ $pageTitle = $game ? $game['name'] : 'Oyun Bulunamadı';
 </head>
 <body class="bg-gray-100 text-gray-800">
   <div class="max-w-5xl mx-auto py-10 px-4">
+    <header class="mb-8 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <img src="res/images/CapsuleLogo.png" alt="Capsule Logo" class="h-14">
+                <p class="text-gray-500 mt-2">Prototip</p>
+            </div>
+            <nav class="flex space-x-4">
+                <a href="index.php" class="text-gray-600 hover:text-indigo-600 font-medium">Ana Sayfa</a>
+                <!-- <a href="studio/studio.php" class="text-gray-600 hover:text-indigo-600 font-medium">Studio</a>
+                <a href="status.php" class="text-gray-600 hover:text-indigo-600 font-medium">Status</a> -->
+                
+                <!-- Kullanıcı adı veya Misafir yazısı -->
+                <div class="flex items-center space-x-2">
+                    <span>|</span>
+                    <!--<img src="res/images/CapsuleMisafir.png" alt="Misafir" class="h-8 w-8 rounded-full">
+                    <span id="user-status" class="text-gray-600 hover:text-indigo-600 font-medium cursor-pointer">
+                        Misafir
+                    </span> -->
 
+                    <button class="text-gray-600 hover:text-indigo-600 font-medium">
+                        Giriş Yap
+                    </button>
+
+                    <button class="text-gray-600 hover:text-indigo-600 font-medium">
+                        Kayıt Ol
+                    </button>
+                </div>
+            </nav>
+        </header>
     <!-- Header -->
     <div class="flex justify-between items-center mb-8">
       <a href="/studio/studio.php" class="text-indigo-600 font-semibold text-lg">&larr; Geri Dön</a>
