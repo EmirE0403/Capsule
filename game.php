@@ -1,18 +1,21 @@
 <?php
 // Bağlantı
-$db = new SQLite3(__DIR__ . '/database/games/games.db');
+//$db = new SQLite3(__DIR__ . '/database/games/games.db');
 
 // ID'yi al
-$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+//$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 // Oyun verisini al
-$stmt = $db->prepare("SELECT * FROM games WHERE id = :id");
-$stmt->bindValue(':id', $id, SQLITE3_INTEGER);
-$result = $stmt->execute();
-$game = $result->fetchArray(SQLITE3_ASSOC);
+//$stmt = $db->prepare("SELECT * FROM games WHERE id = :id");
+//$stmt->bindValue(':id', $id, SQLITE3_INTEGER);
+//$result = $stmt->execute();
+//$game = $result->fetchArray(SQLITE3_ASSOC);
 
 // Sayfa başlığı ayarı
-$pageTitle = $game ? $game['name'] : 'Oyun Bulunamadı';
+//$pageTitle = $game ? $game['name'] : 'Oyun Bulunamadı';
+$pageTitle = 't';
+$game = null;
+$id = 1;
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +26,8 @@ $pageTitle = $game ? $game['name'] : 'Oyun Bulunamadı';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <div class="max-w-5xl mx-auto py-10 px-4">
+<body class="bg-gray-50 min-h-screen">
+  <div class="container mx-auto px-4 py-8">
     <header class="mb-8 flex items-center justify-between">
             <div class="flex items-center space-x-4">
                 <img src="res/images/CapsuleLogo.png" alt="Capsule Logo" class="h-14">
@@ -54,10 +57,7 @@ $pageTitle = $game ? $game['name'] : 'Oyun Bulunamadı';
             </nav>
         </header>
     <!-- Header -->
-    <div class="flex justify-between items-center mb-8">
-      <a href="/studio/studio.php" class="text-indigo-600 font-semibold text-lg">&larr; Geri Dön</a>
-      <h1 class="text-3xl font-bold">Capsule Game Viewer</h1>
-    </div>
+
 
     <?php if ($game): ?>
       <?php if (!empty($game['deleted'])): ?>
