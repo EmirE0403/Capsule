@@ -1,0 +1,30 @@
+#gui {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  z-index: 10;
+}
+
+.hud-button {
+  font-size: 2em;             /* Yazı boyutu ayarlanabilir */
+  width: 1.5em;               /* Yükseklik ve genişlik font'a bağlı */
+  height: 1.5em;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hud-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
