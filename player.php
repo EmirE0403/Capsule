@@ -72,6 +72,8 @@
       display: block !important;
     }
   </style>
+
+  <style></style>
 </head>
 <body>
   <div id="gui">
