@@ -186,7 +186,8 @@ if ($config['maintenance_mode'] && !isset($_GET['admin'])) {
 
         async function init() {
             try {
-                const games = await fetchGames();
+                //const games = await fetchGames(); 
+                const games = null
                 renderGames(games);
             } catch (error) {
                 const errorElement = document.getElementById('error');
